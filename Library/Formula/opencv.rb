@@ -1,10 +1,9 @@
 require 'formula'
 
 class Opencv < Formula
-  url 'http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.3/OpenCV-2.3.0rc.tar.bz2'
-  version "2.3.0rc"
+  url 'http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.3/OpenCV-2.3.0.tar.bz2'
   homepage 'http://opencv.willowgarage.com/wiki/'
-  md5 'c0c2f3ad566f66e060647a910e6dc99d'
+  sha1 '53b5d5aab835eb63d4546489b1c1246eeba1da29'
 
   depends_on 'cmake' => :build
   depends_on 'pkg-config' => :build
@@ -19,11 +18,6 @@ class Opencv < Formula
 
   def options
     [['--build32', 'Force a 32-bit build.']]
-  end
-
-  def patches
-    # makes opencv build in presence of ffmpeg 0.8
-    "https://raw.github.com/gist/1046730/opencv-ffmpeg-0.8.patch"
   end
 
   def install
