@@ -130,7 +130,7 @@ class Formula
     @name=name
     validate_variable :name
 
-    @path=path
+    @path = path.nil? ? nil : Pathname.new(path)
 
     set_instance_variable 'version'
     @version ||= @spec_to_use.detect_version
@@ -351,7 +351,11 @@ class Formula
         that we can update the formula accordingly. Thanks!
         EOS
       puts
-      puts "If it doesn't work you can: brew install --use-gcc"
+      if MacOS.xcode_version < "4.2"
+        puts "If it doesn't work you can: brew install --use-gcc"
+      else
+        puts "If it doesn't work you can try: brew install --use-clang"
+      end
       puts
     end
   end
